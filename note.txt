@@ -1,0 +1,1 @@
+Seeds are for creating fake data for the campgrounds
