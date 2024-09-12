@@ -27,8 +27,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 
 const User = require('./models/user');
-const Campground = require('./models/campground');
-const Review = require('./models/review')
+
 
 const userRoutes = require('./routes/users')
 const campgroundRoutes = require('./routes/campgrounds');
@@ -62,9 +61,9 @@ app.engine('ejs', ejsMate);
 // one of many engines that are used to run or parse ejs, tell express to use that insteead of the default
 // can define layout file
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'))
+//dont need to set with react
 app.set('views', path.join(__dirname, 'views'));
-// ***LOOK IT UP AGAIN
+//*** */
 
 app.use(express.urlencoded({ extended: true }));
 // see the request body
@@ -174,13 +173,14 @@ app.use((req, res, next) => {
 
 //possible removal later
 //hard code the creation of new user
-app.get('/fakeUser', async (req, res) => {
-    const user = new User({ email: 'shdfaksh@gmail.com', username: 'deagha' })
-    const newUser = await User.register(user, 'chicken')
-    //it will authenticate for us
-    //hash using pbkdf2, platform independent
-    res.send(newUser);
-})
+
+// app.get('/fakeUser', async (req, res) => {
+//     const user = new User({ email: 'shdfaksh@gmail.com', username: 'deagha' })
+//     const newUser = await User.register(user, 'chicken')
+//     //it will authenticate for us
+//     //hash using pbkdf2, platform independent
+//     res.send(newUser);
+// })
 
 
 app.use('/', userRoutes)

@@ -7,8 +7,6 @@ const multer = require('multer');
 const { storage } = require('../cloudinary');
 const upload = multer({ storage });
 
-const Campground = require('../models/campground');
-
 
 //middleware validate&isauthor
 
